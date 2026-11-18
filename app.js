@@ -172,10 +172,9 @@
     const cells = Array.from({ length: 45 }, () => building.appendChild(document.createElement('i')));
     const order = cells.map((_, i) => i).sort(() => Math.random() - 0.5);
     const tips = [
-      'Совет: если долго смотреть на стул, стул начнёт смотреть на тебя.',
-      'Совет: лифт ходит по кнопкам 1–7. Или ногами по лестнице.',
-      'Совет: на пятом этаже опять выкрутили лампочку. Свети мышкой.',
-      'Совет: почтовый ящик №1 открыт для заказов.',
+      'совет: не смотри на стул слишком долго',
+      'совет: цифры 1–7 вызывают лифт',
+      'совет: на пятом темно, свети мышкой',
     ];
     const pct = $('#loader-pct'), tipEl = $('#loader-tip'), label = $('#loader-label');
     const actions = $('#loader-actions'), press = $('#loader-press');
@@ -205,7 +204,7 @@
 
     function done() {
       ready = true;
-      label.textContent = 'подъезд загружен';
+      label.textContent = 'готово';
       pct.textContent = '100%';
       actions.classList.add('show');
       press.classList.add('show');
@@ -770,10 +769,10 @@
       const range = document.createRange();
       range.selectNodeContents(el);
       const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
-      toast('выделил ник, жми ctrl+c');
+      toast('выделил, жми ctrl+c');
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(() => toast('ник скопирован: ' + text), fallback);
+      navigator.clipboard.writeText(text).then(() => toast('скопировано'), fallback);
     } else fallback();
   });
 })();
