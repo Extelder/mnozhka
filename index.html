@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Андрей Mnozhka — дитя многоэтажки</title>
+<meta name="description" content="Андрей Mnozhka: манга «Перерождение в стул», комикс «Клеть. Бездна», загрузочные экраны для игр, иллюстрации и скетчи. Заказы и коллабы: @Mnozhka в Telegram.">
+<meta property="og:title" content="Андрей Mnozhka — дитя многоэтажки">
+<meta property="og:description" content="Манга, комиксы и рисовашки. Спускайся по этажам.">
+<meta property="og:image" content="img/klet/cover.webp">
+<meta name="theme-color" content="#0d0e12">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700&family=PT+Mono&family=Press+Start+2P&family=Rubik+Dirt&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ЗАГРУЗОЧНЫЙ ЭКРАН ============ -->
+<div id="loader" role="dialog" aria-modal="true" aria-label="Вход в подъезд">
+  <div class="loader-inner">
+    <div class="loader-building" aria-hidden="true"></div>
+    <p class="loader-title">ДИТЯ МНОГОЭТАЖКИ</p>
+    <p class="loader-status"><span id="loader-label">загружаем подъезд</span> <span id="loader-pct">0%</span></p>
+    <p class="loader-tip" id="loader-tip">Совет: если долго смотреть на стул, стул начнёт смотреть на тебя.</p>
+    <div class="loader-actions" id="loader-actions">
+      <button type="button" class="btn-hud" id="enter-sound">Войти со звуком</button>
+      <button type="button" class="btn-hud ghost" id="enter-quiet">Без звука</button>
+    </div>
+    <p class="loader-press" id="loader-press">нажми любую клавишу</p>
+  </div>
+</div>
+
+<!-- ============ ДВЕРИ ЛИФТА ============ -->
+<div id="doors" aria-hidden="true">
+  <div class="door door-l"><span class="scrawl s1">тут был стул</span></div>
+  <div class="door door-r"><span class="scrawl s2">MNOZHKA</span><span class="scrawl s3">ЖДИ ГЛАВУ</span></div>
+  <div class="doors-led"><b class="led-arrow">▲</b><b class="led-num">7</b></div>
+</div>
+
+<!-- ============ HUD ============ -->
+<header class="hud">
+  <a class="hud-logo" href="#roof" data-travel="7" aria-label="Наверх, на крышу">
+    <span class="mini-cell" aria-hidden="true"><i></i><i></i></span>
+    <span>MNOZHKA</span>
+  </a>
+  <div class="hud-right">
+    <button type="button" class="hud-sound" id="sound-toggle" aria-pressed="false">
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="hud-sound-label">звук: выкл</span>
+    </button>
+    <a class="hud-write" href="https://t.me/Mnozhka" target="_blank" rel="noopener">Написать</a>
+  </div>
+</header>
+
+<!-- ============ ЛИФТ ============ -->
+<nav class="lift" id="lift" aria-label="Этажи">
+  <button type="button" class="lift-led" id="lift-led" aria-expanded="false" aria-controls="lift-buttons">
+    <span class="led-screen" aria-hidden="true"><b class="led-arrow" id="led-arrow"></b><b class="led-num" id="led-num">7</b></span>
+    <span class="lift-led-cap">лифт</span>
+  </button>
+  <ol class="lift-buttons" id="lift-buttons">
+    <li><a href="#roof" data-travel="7"><span class="lb">7</span><span class="ll">Крыша</span></a></li>
+    <li><a href="#chair" data-travel="6"><span class="lb">6</span><span class="ll">Стул</span></a></li>
+    <li><a href="#klet" data-travel="5"><span class="lb">5</span><span class="ll">Клеть</span></a></li>
+    <li><a href="#art" data-travel="4"><span class="lb">4</span><span class="ll">Рисовашки</span></a></li>
+    <li><a href="#works" data-travel="3"><span class="lb">3</span><span class="ll">Заказы</span></a></li>
+    <li><a href="#sketch" data-travel="2"><span class="lb">2</span><span class="ll">Скетчбук</span></a></li>
+    <li><a href="#mail" data-travel="1"><span class="lb">1</span><span class="ll">Почта</span></a></li>
+  </ol>
+  <p class="lift-hint" aria-hidden="true">клавиши 1–7</p>
+</nav>
+
+<main>
+
+<!-- ============ 7: КРЫША ============ -->
+<section id="roof" class="floor roof" data-floor="7" data-name="Крыша" aria-labelledby="roof-title">
+  <canvas id="city" aria-hidden="true"></canvas>
+  <div class="roof-fog" aria-hidden="true"></div>
+  <div class="wrap roof-grid">
+    <div class="roof-text">
+      <p class="eyebrow">подъезд 1 · этаж 7 · крыша</p>
+      <h1 id="roof-title" class="roof-name"><span>Андрей</span><span>Mnozhka</span></h1>
+      <p class="roof-lede">Дитя многоэтажки. Рисую мангу, комиксы и загрузочные экраны для игр. Много штриховки, много бетона, иногда стулья.</p>
+      <div class="roof-cta">
+        <a class="btn-ink" href="#chair" data-travel="6">Читать мангу</a>
+        <a class="btn-line" href="https://t.me/Mnozhka" target="_blank" rel="noopener">Написать @Mnozhka</a>
+      </div>
+      <ul class="roof-facts">
+        <li><b>«Клеть. Бездна»</b> комикс, изд. «Альпака», 2026</li>
+        <li><b>«Перерождение в стул»</b> манга-онгоинг на MangaLib</li>
+        <li><b>4 загрузочных экрана</b> в игре «Клеть»</li>
+      </ul>
+    </div>
+    <div class="cell-stage" aria-hidden="true">
+      <div class="bubble cell-bubble">ну заходи,<br>раз пришёл</div>
+      <div class="cube" id="cube">
+        <div class="face top"><span class="hatch"></span></div>
+        <div class="face right"><div class="cube-windows" id="cube-windows"></div></div>
+        <div class="face front">
+          <div class="eyes">
+            <span class="eye"><i class="pupil"></i></span>
+            <span class="eye"><i class="pupil"></i></span>
+          </div>
+          <span class="cube-number">№1</span>
+        </div>
+      </div>
+      <div class="cube-shadow"></div>
+    </div>
+  </div>
+  <a class="stairs-hint" href="#chair" data-travel="6"><span aria-hidden="true">▼</span> вниз по лестнице</a>
+</section>
+
+<!-- ============ 6: ПЕРЕРОЖДЕНИЕ В СТУЛ ============ -->
+<section id="chair" class="floor" data-floor="6" data-name="Стул" aria-labelledby="chair-title">
+  <div class="landing">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">6</span>
+        <div>
+          <p class="eyebrow">манга · онгоинг · mangalib</p>
+          <h2 id="chair-title" class="title">Перерождение в стул</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 6</span><span class="flats">кв. 21 · 22 · 23 · 24</span></div></div>
+  </div>
+
+  <div class="paper body-pad">
+    <span class="sfx sfx-skrip" aria-hidden="true">СКРИП</span>
+    <div class="wrap chair-grid">
+      <figure class="chair-cover">
+        <a href="img/chair/cover.webp" data-lightbox="chair" data-caption="Обложка «Перерождение в стул»">
+          <img src="img/chair/cover.webp" width="563" height="800" alt="Обложка манги «Перерождение в стул»: девушка в цветастом платье и стул">
+        </a>
+      </figure>
+      <div class="chair-text">
+        <blockquote class="bubble big">
+          <p>История про человека, переродившегося в стул. Думаю, этого хватит.</p>
+        </blockquote>
+        <p>Чёрно-белая манга с густой штриховкой, абсурдом и очень серьёзными лицами. Главы выходят на MangaLib, анонсы и спойлеры появляются в канале.</p>
+        <dl class="specs">
+          <div><dt>Глава 3</dt><dd>60 страниц, вышла 14 апреля 2026</dd></div>
+          <div><dt>Читатели</dt><dd>1000+ добавили тайтл в списки на MangaLib</dd></div>
+          <div><dt>Формат</dt><dd>ч/б, читается слева направо</dd></div>
+        </dl>
+        <a class="btn-ink" href="https://mangalib.me/ru/manga/181772--pererozdenie-v-stul" target="_blank" rel="noopener">Читать на MangaLib</a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="reader" id="reader" tabindex="0" aria-roledescription="читалка" aria-label="Превью главы 2 «Слава стульям». Стрелки влево и вправо листают страницы.">
+        <div class="reader-head">
+          <p class="eyebrow">превью · глава 2 «Слава стульям»</p>
+          <p class="reader-count"><span id="reader-cur">01</span> / <span id="reader-total">10</span></p>
+        </div>
+        <div class="reader-stage">
+          <button type="button" class="reader-nav prev" id="reader-prev" aria-label="Предыдущая страница">‹</button>
+          <div class="reader-page" id="reader-page">
+            <img id="reader-img" src="img/chair/ch2-01.webp" width="573" height="800" alt="Глава 2, страница 1">
+          </div>
+          <button type="button" class="reader-nav next" id="reader-next" aria-label="Следующая страница">›</button>
+        </div>
+        <div class="reader-strip" id="reader-strip" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5: КЛЕТЬ ============ -->
+<section id="klet" class="floor klet" data-floor="5" data-name="Клеть" aria-labelledby="klet-title">
+  <div class="landing landing-dark">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">5</span>
+        <div>
+          <p class="eyebrow">комикс · изд. «Альпака» · 2026</p>
+          <h2 id="klet-title" class="title">Клеть. Бездна</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 5</span><span class="flats">кв. 17 · 18 · 19 · 20</span><span class="warn">лампочку опять выкрутили</span></div></div>
+  </div>
+
+  <div class="abyss body-pad" id="abyss">
+    <div class="abyss-bg" aria-hidden="true"></div>
+    <div class="abyss-dark" aria-hidden="true"></div>
+    <span class="sfx sfx-klet" aria-hidden="true">ВЖУХ</span>
+    <div class="wrap klet-grid">
+      <div class="klet-text">
+        <p class="klet-lede">Комикс по вселенной видеоигры «Клеть». Самостоятельная история и при этом кусок лора игры. Вышел в феврале 2026 года, продаётся в книжных и на маркетплейсах.</p>
+        <p>Для самой игры я нарисовал загрузочные экраны: четыре экрана с параллаксом уже стоят в «Клети». Посмотри, как они выглядят, ниже.</p>
+        <div class="klet-cta">
+          <a class="btn-blood" href="https://t.me/dityamnozhki/1540" target="_blank" rel="noopener">Где купить</a>
+          <a class="btn-line light" href="#works" data-travel="3">Другие заказы</a>
+        </div>
+      </div>
+      <div class="klet-book">
+        <a class="book-main" href="img/klet/cover.webp" data-lightbox="klet" data-caption="Обложка «Клеть. Бездна»">
+          <img src="img/klet/cover.webp" width="532" height="800" alt="Обложка комикса «Клеть. Бездна»: красный заголовок, заключённые в противогазах">
+        </a>
+        <a class="book-photo p1" href="img/klet/spread-2.webp" data-lightbox="klet" data-caption="Разворот «Клеть. Бездна»">
+          <img src="img/klet/spread-2.webp" width="800" height="800" loading="lazy" alt="Фото разворота комикса">
+        </a>
+        <a class="book-photo p2" href="img/klet/spread-1.webp" data-lightbox="klet" data-caption="Разворот «Клеть. Бездна»">
+          <img src="img/klet/spread-1.webp" width="800" height="800" loading="lazy" alt="Фото разворота комикса с крупными планами">
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <figure class="loadscreen" id="loadscreen">
+        <div class="ls-frame" id="ls-frame">
+          <img class="ls-img" id="ls-img" src="img/klet/load-1.webp" width="800" height="416" loading="lazy" alt="Загрузочный экран для игры «Клеть»">
+          <div class="ls-ui" aria-hidden="true">
+            <span class="ls-label">ЗАГРУЗКА</span>
+            <span class="ls-bar"><i id="ls-bar"></i></span>
+          </div>
+        </div>
+        <figcaption>
+          <span>Загрузочные экраны для игры «Клеть». Подвигай мышкой: в игре они живут на параллаксе.</span>
+          <span class="ls-dots" id="ls-dots"></span>
+        </figcaption>
+      </figure>
+
+      <ul class="klet-more">
+        <li><a href="img/klet/cave-2.webp" data-lightbox="klet" data-caption="Арт по «Клети»"><img src="img/klet/cave-2.webp" width="800" height="655" loading="lazy" alt="Тоннель с огнями и фигура в куртке"></a></li>
+        <li><a href="img/klet/crowd.webp" data-lightbox="klet" data-caption="Арт по «Клети»"><img src="img/klet/crowd.webp" width="800" height="601" loading="lazy" alt="Заключённые в противогазах на психоделическом фоне"></a></li>
+        <li><a href="img/klet/miku.webp" data-lightbox="klet" data-caption="Мику в форме «Клети»"><img src="img/klet/miku.webp" width="800" height="796" loading="lazy" alt="Хацунэ Мику в форме из «Клети»"></a></li>
+        <li><a href="img/klet/page-2.webp" data-lightbox="klet" data-caption="Страница комикса «Клеть. Бездна»"><img src="img/klet/page-2.webp" width="532" height="800" loading="lazy" alt="Ч/б страница комикса: крупный план лица"></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4: РИСОВАШКИ ============ -->
+<section id="art" class="floor" data-floor="4" data-name="Рисовашки" aria-labelledby="art-title">
+  <div class="landing">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">4</span>
+        <div>
+          <p class="eyebrow">иллюстрации · арты · фанарты</p>
+          <h2 id="art-title" class="title">Рисовашки</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 4</span><span class="flats">кв. 13 · 14 · 15 · 16</span></div></div>
+  </div>
+
+  <div class="paper body-pad">
+    <span class="sfx sfx-bah" aria-hidden="true">БАХ</span>
+    <div class="wrap">
+      <p class="section-lede">Всё, что не влезло в главы: портреты, монстры, панельки и иногда клоуны. Нажми на картинку, чтобы рассмотреть.</p>
+      <ul class="gallery">
+        <li><a href="img/art/1486_6.webp" data-lightbox="art"><img src="img/art/1486_6.webp" width="800" height="800" loading="lazy" alt="Крупный план мрачного лица и надпись на панели"></a></li>
+        <li><a href="img/art/1427_0.webp" data-lightbox="art"><img src="img/art/1427_0.webp" width="800" height="775" loading="lazy" alt="Кричащий клоун на красном фоне"></a></li>
+        <li><a href="img/art/1486_3.webp" data-lightbox="art"><img src="img/art/1486_3.webp" width="800" height="800" loading="lazy" alt="Панельные дома, оплетённые щупальцами"></a></li>
+        <li><a href="img/art/1534_0.webp" data-lightbox="art"><img src="img/art/1534_0.webp" width="581" height="800" loading="lazy" alt="Doom-Есенин среди мухоморов"></a></li>
+        <li><a href="img/art/1486_0.webp" data-lightbox="art"><img src="img/art/1486_0.webp" width="800" height="800" loading="lazy" alt="Девушка в куртке с меховым капюшоном"></a></li>
+        <li><a href="img/art/1461_0.webp" data-lightbox="art"><img src="img/art/1461_0.webp" width="566" height="800" loading="lazy" alt="Портрет в розовых тонах"></a></li>
+        <li><a href="img/art/1486_2.webp" data-lightbox="art"><img src="img/art/1486_2.webp" width="800" height="800" loading="lazy" alt="Биомеханическое существо из труб и проводов"></a></li>
+        <li><a href="img/art/1460_0.webp" data-lightbox="art"><img src="img/art/1460_0.webp" width="684" height="800" loading="lazy" alt="Бородатый волшебник в кедах, манга-эффекты"></a></li>
+        <li><a href="img/art/1486_1.webp" data-lightbox="art"><img src="img/art/1486_1.webp" width="800" height="800" loading="lazy" alt="Огромный рот с зубами и клоун"></a></li>
+        <li><a href="img/art/1467_0.webp" data-lightbox="art"><img src="img/art/1467_0.webp" width="566" height="800" loading="lazy" alt="Парень в шарфе и куртке"></a></li>
+        <li><a href="img/art/1365_0.webp" data-lightbox="art"><img src="img/art/1365_0.webp" width="800" height="800" loading="lazy" alt="Человек-куб с окнами и антенной"></a></li>
+        <li><a href="img/art/1421_0.webp" data-lightbox="art"><img src="img/art/1421_0.webp" width="788" height="800" loading="lazy" alt="Существо в шапке в полумраке"></a></li>
+        <li><a href="img/art/1226_0.webp" data-lightbox="art"><img src="img/art/1226_0.webp" width="679" height="800" loading="lazy" alt="Взрыв в комнате, надпись «БАХ»"></a></li>
+        <li><a href="img/art/1574_0.webp" data-lightbox="art"><img src="img/art/1574_0.webp" width="534" height="800" loading="lazy" alt="Два персонажа, незаконченная обложка"></a></li>
+        <li><a href="img/art/1457_0.webp" data-lightbox="art"><img src="img/art/1457_0.webp" width="800" height="714" loading="lazy" alt="Манга-панели: дворы и подъезды"></a></li>
+        <li><a href="img/art/1224_0.webp" data-lightbox="art"><img src="img/art/1224_0.webp" width="496" height="800" loading="lazy" alt="Человек в чёрном костюме с лицом в бинтах"></a></li>
+        <li><a href="img/art/1386_0.webp" data-lightbox="art"><img src="img/art/1386_0.webp" width="800" height="566" loading="lazy" alt="Групповой арт Sweet Chairity"></a></li>
+        <li><a href="img/art/1464_0.webp" data-lightbox="art"><img src="img/art/1464_0.webp" width="761" height="800" loading="lazy" alt="Девушка в очках, серый скетч"></a></li>
+        <li><a href="img/art/1457_1.webp" data-lightbox="art"><img src="img/art/1457_1.webp" width="796" height="800" loading="lazy" alt="Манга-страница с надписью «пи-ип»"></a></li>
+        <li><a href="img/art/1293_0.webp" data-lightbox="art"><img src="img/art/1293_0.webp" width="769" height="584" loading="lazy" alt="Тёмный механизм с прорезями и шлангами"></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3: ЗАКАЗЫ ============ -->
+<section id="works" class="floor" data-floor="3" data-name="Заказы" aria-labelledby="works-title">
+  <div class="landing">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">3</span>
+        <div>
+          <p class="eyebrow">обложки · стрипы · коллабы</p>
+          <h2 id="works-title" class="title">Заказы</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 3</span><span class="flats">кв. 9 · 10 · 11 · 12</span></div></div>
+  </div>
+
+  <div class="concrete body-pad">
+    <div class="wrap works">
+      <article class="work work-whale">
+        <a class="work-banner" href="img/works/whale-banner.webp" data-lightbox="works" data-caption="Баннер: Completely Fictional Story About a City Inside a Whale">
+          <img src="img/works/whale-banner.webp" width="800" height="258" loading="lazy" alt="Широкий баннер: команда зверей на корабле-машине несётся по волне">
+        </a>
+        <a class="work-main" href="img/works/whale-cover.webp" data-lightbox="works" data-caption="Обложка Steam: Completely Fictional Story About a City Inside a Whale">
+          <img src="img/works/whale-cover.webp" width="533" height="800" loading="lazy" alt="Обложка игры: корабль-машина на волне, яркие пастельные цвета">
+        </a>
+        <div class="work-body">
+          <p class="eyebrow">обложка steam · игра</p>
+          <h3>Completely Fictional Story About a City Inside a Whale</h3>
+          <p>Обложка для страницы игры в Steam и шесть стрипов к ней. Цветное, мягкое и совсем не про бетон.</p>
+          <ul class="strips">
+            <li><a href="img/works/strip-1.webp" data-lightbox="works" data-caption="Стрип 1"><img src="img/works/strip-1.webp" width="565" height="800" loading="lazy" alt="Цветной стрип 1"></a></li>
+            <li><a href="img/works/strip-2.webp" data-lightbox="works" data-caption="Стрип 2"><img src="img/works/strip-2.webp" width="565" height="800" loading="lazy" alt="Цветной стрип 2"></a></li>
+            <li><a href="img/works/strip-3.webp" data-lightbox="works" data-caption="Стрип 3"><img src="img/works/strip-3.webp" width="565" height="800" loading="lazy" alt="Цветной стрип 3"></a></li>
+            <li><a href="img/works/strip-4.webp" data-lightbox="works" data-caption="Стрип 4"><img src="img/works/strip-4.webp" width="565" height="800" loading="lazy" alt="Цветной стрип 4"></a></li>
+            <li><a href="img/works/strip-5.webp" data-lightbox="works" data-caption="Стрип 5"><img src="img/works/strip-5.webp" width="565" height="800" loading="lazy" alt="Цветной стрип 5"></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="work work-row">
+        <a class="work-thumb" href="img/klet/load-2.webp" data-lightbox="works" data-caption="Загрузочный экран для «Клети»">
+          <img src="img/klet/load-2.webp" width="800" height="416" loading="lazy" alt="Загрузочный экран: грибы и фигуры в полумраке">
+        </a>
+        <div class="work-body">
+          <p class="eyebrow">геймдев · загрузочные экраны</p>
+          <h3>«Клеть»</h3>
+          <p>Четыре загрузочных экрана с параллаксом и отдельные арты, которые уже стоят в игре.</p>
+          <a class="link-arrow" href="#klet" data-travel="5">Подняться на 5 этаж</a>
+        </div>
+      </article>
+
+      <article class="work work-row">
+        <div class="work-pair">
+          <a href="img/works/bs-1.webp" data-lightbox="works" data-caption="Новогодний коллаб Business Sharks Manga"><img src="img/works/bs-1.webp" width="564" height="800" loading="lazy" alt="Страница коллаба: акула бизнеса в костюме"></a>
+          <a href="img/works/bs-2.webp" data-lightbox="works" data-caption="Новогодний коллаб Business Sharks Manga"><img src="img/works/bs-2.webp" width="564" height="800" loading="lazy" alt="Страница коллаба: тёмный коридор"></a>
+        </div>
+        <div class="work-body">
+          <p class="eyebrow">руманга · коллаб</p>
+          <h3>Business Sharks Manga</h3>
+          <p>Страницы в новогодних коллабах «Акул бизнеса», сообщества авторов русской манги.</p>
+        </div>
+      </article>
+
+      <aside class="work-cta">
+        <p>Нужна обложка, иллюстрация, загрузочный экран или страница комикса?</p>
+        <a class="btn-ink light" href="#mail" data-travel="1">Ящик №1 на первом этаже</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2: СКЕТЧБУК ============ -->
+<section id="sketch" class="floor" data-floor="2" data-name="Скетчбук" aria-labelledby="sketch-title">
+  <div class="landing">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">2</span>
+        <div>
+          <p class="eyebrow">традишки · скетчи · статики в вузе</p>
+          <h2 id="sketch-title" class="title">Скетчбук</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 2</span><span class="flats">кв. 5 · 6 · 7 · 8</span></div></div>
+  </div>
+
+  <div class="paper body-pad sketch-wall">
+    <div class="wrap">
+      <p class="section-lede">Карандаш, тушь, сканер. Листай вбок или тащи мышкой.</p>
+    </div>
+    <ul class="sketches" id="sketches">
+      <li><a href="img/sketch/1315_0.webp" data-lightbox="sketch"><img src="img/sketch/1315_0.webp" width="800" height="689" loading="lazy" alt="Скетч: монстр с огромной пастью"></a></li>
+      <li><a href="img/sketch/1356_1.webp" data-lightbox="sketch"><img src="img/sketch/1356_1.webp" width="800" height="629" loading="lazy" alt="Разворот скетчбука, карандаш"></a></li>
+      <li><a href="img/sketch/1321_0.webp" data-lightbox="sketch"><img src="img/sketch/1321_0.webp" width="452" height="800" loading="lazy" alt="Скетч: высокая фигура"></a></li>
+      <li><a href="img/sketch/1414_1.webp" data-lightbox="sketch"><img src="img/sketch/1414_1.webp" width="800" height="521" loading="lazy" alt="Коллаж скетчей тушью"></a></li>
+      <li><a href="img/sketch/1454_0.webp" data-lightbox="sketch"><img src="img/sketch/1454_0.webp" width="574" height="800" loading="lazy" alt="Скан: персонаж с гитарой и надписи"></a></li>
+      <li><a href="img/sketch/1315_4.webp" data-lightbox="sketch"><img src="img/sketch/1315_4.webp" width="714" height="800" loading="lazy" alt="Скетч: лица и фигуры"></a></li>
+      <li><a href="img/sketch/1455_0.webp" data-lightbox="sketch"><img src="img/sketch/1455_0.webp" width="800" height="645" loading="lazy" alt="Скан: персонажи и череп"></a></li>
+      <li><a href="img/sketch/1294_0.webp" data-lightbox="sketch"><img src="img/sketch/1294_0.webp" width="565" height="800" loading="lazy" alt="Концепт персонажа"></a></li>
+      <li><a href="img/sketch/1356_0.webp" data-lightbox="sketch"><img src="img/sketch/1356_0.webp" width="800" height="667" loading="lazy" alt="Разворот скетчбука с фигурой в скафандре"></a></li>
+      <li><a href="img/sketch/1465_0.webp" data-lightbox="sketch"><img src="img/sketch/1465_0.webp" width="581" height="800" loading="lazy" alt="Скетч в технике под традицию"></a></li>
+      <li><a href="img/sketch/1419_0.webp" data-lightbox="sketch"><img src="img/sketch/1419_0.webp" width="800" height="514" loading="lazy" alt="Статики в вузе: группа людей"></a></li>
+      <li><a href="img/sketch/1484_0.webp" data-lightbox="sketch"><img src="img/sketch/1484_0.webp" width="784" height="800" loading="lazy" alt="Портрет в очках на лбу, линия"></a></li>
+      <li><a href="img/sketch/1321_6.webp" data-lightbox="sketch"><img src="img/sketch/1321_6.webp" width="800" height="657" loading="lazy" alt="Скетч: механическое лицо"></a></li>
+      <li><a href="img/sketch/1518_0.webp" data-lightbox="sketch"><img src="img/sketch/1518_0.webp" width="506" height="800" loading="lazy" alt="Скетч новыми кистями: девушка"></a></li>
+      <li><a href="img/sketch/1523_0.webp" data-lightbox="sketch"><img src="img/sketch/1523_0.webp" width="800" height="565" loading="lazy" alt="Скетчи фигур"></a></li>
+      <li><a href="img/sketch/1414_3.webp" data-lightbox="sketch"><img src="img/sketch/1414_3.webp" width="800" height="521" loading="lazy" alt="Коллаж традиционных скетчей"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 1: ПОЧТА ============ -->
+<section id="mail" class="floor" data-floor="1" data-name="Почта" aria-labelledby="mail-title">
+  <div class="landing">
+    <div class="landing-top">
+      <div class="wrap landing-grid">
+        <span class="stencil" aria-hidden="true">1</span>
+        <div>
+          <p class="eyebrow">контакты · заказы · коллабы</p>
+          <h2 id="mail-title" class="title">Почта</h2>
+        </div>
+      </div>
+    </div>
+    <div class="landing-bottom"><div class="wrap plates" aria-hidden="true"><span class="plate">этаж 1</span><span class="flats">кв. 1 · 2 · 3 · 4</span></div></div>
+  </div>
+
+  <div class="greenwall body-pad">
+    <div class="wrap mail-grid">
+      <div class="notice">
+        <span class="tape" aria-hidden="true"></span>
+        <p class="notice-head">Объявление</p>
+        <p class="notice-body">Рисую мангу, обложки, иллюстрации и загрузочные экраны для игр. По заказам, коллабам и просто так пишите в Telegram:</p>
+        <p class="notice-handle">@Mnozhka</p>
+        <button type="button" class="copy" id="copy-handle" data-copy="@Mnozhka">Скопировать ник</button>
+        <ul class="tabs" aria-label="Отрывные листочки с контактом">
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+          <li><a href="https://t.me/Mnozhka" target="_blank" rel="noopener">t.me/Mnozhka</a></li>
+        </ul>
+      </div>
+
+      <div class="boxes">
+        <a class="box main" href="https://t.me/Mnozhka" target="_blank" rel="noopener">
+          <span class="box-num">1</span><span class="box-slot" aria-hidden="true"><i class="letter"></i></span>
+          <span class="box-label"><b>Личка</b> @Mnozhka</span>
+        </a>
+        <a class="box" href="https://t.me/dityamnozhki" target="_blank" rel="noopener">
+          <span class="box-num">2</span><span class="box-slot" aria-hidden="true"></span>
+          <span class="box-label"><b>Канал</b> дитя многоэтажки</span>
+        </a>
+        <a class="box" href="https://mangalib.me/ru/manga/181772--pererozdenie-v-stul" target="_blank" rel="noopener">
+          <span class="box-num">3</span><span class="box-slot" aria-hidden="true"></span>
+          <span class="box-label"><b>MangaLib</b> «Перерождение в стул»</span>
+        </a>
+        <div class="box dud" aria-hidden="true"><span class="box-num">4</span><span class="box-slot"></span><span class="box-label">рекламу не класть</span></div>
+        <div class="box dud" aria-hidden="true"><span class="box-num">5</span><span class="box-slot"></span><span class="box-label">стул</span></div>
+        <div class="box dud" aria-hidden="true"><span class="box-num">6</span><span class="box-slot"></span><span class="box-label">пусто</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <p><span class="mini-cell" aria-hidden="true"><i></i><i></i></span> Андрей Mnozhka · дитя многоэтажки</p>
+    <p>Все арты принадлежат автору. Подъезд открыт круглосуточно.</p>
+  </div>
+</footer>
+
+<!-- ============ ЛАЙТБОКС ============ -->
+<dialog id="lightbox" aria-label="Просмотр арта">
+  <figure>
+    <img id="lb-img" src="data:," alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" aria-label="Предыдущая">‹</button>
+  <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Следующая">›</button>
+  <button type="button" class="lb-close" id="lb-close" aria-label="Закрыть">✕</button>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
